@@ -202,7 +202,19 @@ class Game{
         
     }
 
+    static getName(){
+        var name1ref = database.ref("players/player1/Name")
+        name1ref.on("value",function(data){
+            name1 = data.val();
+        })
+        var name2ref = database.ref("players/player2/Name")
+        name2ref.on("value",function(data){
+            name2 = data.val();
+        })
+    }
+
     static showResult(){
+        Game.getName();
         var score1ref = database.ref("players/player1/Score")
         score1ref.on("value",function(data){
             score1 = data.val();
@@ -213,8 +225,8 @@ class Game{
         })
         fill("white");
             textSize(30);
-            text("Score Player 1:"+score1,100,500);
-            text("Score Player 2:"+score2,700,500);
+            text("Score of"+name1+": "+score1,0,500);
+            text("Score of"+name2+": "+score2,500,500);
             text("Score of 0 means you lost, and that of 1 means you won.",600,600)
     }
    
