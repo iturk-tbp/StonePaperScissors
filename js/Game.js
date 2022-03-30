@@ -202,7 +202,7 @@ class Game{
         
     }
 
-    static getName(){
+    static showResult(){
         var name1ref = database.ref("players/player1/Name")
         name1ref.on("value",function(data){
             name1 = data.val();
@@ -211,10 +211,6 @@ class Game{
         name2ref.on("value",function(data){
             name2 = data.val();
         })
-    }
-
-    static showResult(){
-        Game.getName();
         var score1ref = database.ref("players/player1/Score")
         score1ref.on("value",function(data){
             score1 = data.val();
